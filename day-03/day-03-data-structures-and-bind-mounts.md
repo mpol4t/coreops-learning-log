@@ -889,7 +889,7 @@ Değişkenin değerini okur veya genişletir.
 Değişken oluşturma:
 
 ```bash
-isim="User"
+isim="Polat"
 ```
 
 Değişkeni kullanma:
