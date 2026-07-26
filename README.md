@@ -78,6 +78,9 @@ coreops-learning-log/
 │   ├── day-03-data-structures-and-bind-mounts.md
 │   ├── day03.py
 │   └── services.txt
+├── day-04/
+│   ├── day-04-path-cwd-bind-mount.md
+│   └── data.txt
 └── ...
 ```
 
@@ -95,7 +98,7 @@ Her klasör, ilgili modülün kapsamına göre Python dosyalarını, teknik notl
 | [01](day-01/day-01-return-and-exit-codes.md) | Şartname, checklist ve `return` |
 | [02](day-02/day-02-assertions-and-command-chains.md) | Fonksiyon edge case’leri ve `assert` |
 | [03](day-03/day-03-data-structures-and-bind-mounts.md) | `list`, `dict` ve `set` seçimi |
-| 04 | Path: `.`, `..`, root ve home |
+| [04](day-04/day-04-path-cwd-bind-mount.md) | Path, CWD, relative path ve bind mount |
 | 05 | `stdout`, `stderr`, exit code ve `docker run` |
 | 06 | Hafta 1 entegrasyon sınavı |
 | 07 | Toparlanma 1 ve hata kapatma |
