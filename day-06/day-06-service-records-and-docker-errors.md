@@ -592,7 +592,7 @@ Fonksiyonun temel görevi bir iş yapmak ve sonuç üretmektir.
 Fonksiyonun içinde doğrudan:
 
 ```python
-sys.exit(69)
+sys.exit(21)
 ```
 
 kullanılırsa fonksiyon:
@@ -701,13 +701,13 @@ Fonksiyon artık başka bir Python modülünden çağrıldığında bütün prog
 
 ---
 
-# 🚨 Exit Code `31` ve `69`
+# 🚨 Exit Code `11` ve `21`
 
 Şunlar teknik olarak çalışır:
 
 ```python
-sys.exit(31)
-sys.exit(69)
+sys.exit(11)
+sys.exit(21)
 ```
 
 Fakat bu sayıların ne anlama geldiği açıklanmıyorsa rastgele görünür.
@@ -719,11 +719,11 @@ FILE_NOT_FOUND = 3
 IS_DIRECTORY = 4
 ```
 
-veya şartname özel olarak `31` ve `69` istiyorsa:
+veya şartname özel olarak `11` ve `21` istiyorsa:
 
 ```python
-FILE_NOT_FOUND = 69
-IS_DIRECTORY = 31
+FILE_NOT_FOUND = 21
+IS_DIRECTORY = 11
 ```
 
 şeklinde anlamlı isimlerle belgelemektir.
