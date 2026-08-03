@@ -1,0 +1,6 @@
+api2,ok
+db2,fail
+cache2,ok
+api2,fail
+db2,ok
+worker2,fail
