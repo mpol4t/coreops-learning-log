@@ -1,0 +1,6 @@
+api,ok
+db,fail
+cache,ok
+api,fail
+db,ok
+worker,fail
