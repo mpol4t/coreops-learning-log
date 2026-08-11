@@ -1,0 +1,63 @@
+name: Validate learning log
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  repository-hygiene:
+    name: Repository hygiene
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Reject generated and sensitive filenames
+        shell: bash
+        run: |
+          set -euo pipefail
+          tracked_bad_files="$({
+            git ls-files \
+              | grep -E '(^|/)(\.DS_Store|\.env($|\.)|__pycache__/|.*\.py[co]$)' \
+              | grep -Ev '(^|/)\.env\.example$' \
+              || true
+          })"
+          if [[ -n "$tracked_bad_files" ]]; then
+            echo "Tracked generated or sensitive filenames found:"
+            echo "$tracked_bad_files"
+            exit 1
+          fi
+
+      - name: Check whitespace errors
+        run: git show --check --oneline --decorate HEAD
+
+  python-syntax:
+    name: Python syntax
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile tracked Python files
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t python_files < <(git ls-files '*.py')
+          python -m py_compile "${python_files[@]}"
