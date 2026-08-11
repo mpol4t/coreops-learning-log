@@ -1,226 +1,118 @@
 # CoreOps Learning Log
 
-> 72-step hands-on Python, Linux and Docker practice.
-> Hedef: Konu tüketmek değil; çalışan, test edilen, açıklanabilen ve yeniden üretilebilen teknik kanıt üretmek.
+> Python engineering, Linux diagnostics, Git/CI, Docker/Compose and cybersecurity product engineering — learned through reproducible experiments.
 
-## Proje Hakkında
+[![Validate learning log](https://github.com/mpol4t/coreops-learning-log/actions/workflows/validate.yml/badge.svg)](https://github.com/mpol4t/coreops-learning-log/actions/workflows/validate.yml)
 
-Bu repository, Python, Linux ve Docker alanlarında uyguladığım **72 çalışma modülünden oluşan gelişim programının** teknik günlüğüdür.
+Bu repository, 72 mantıksal modülden oluşan uygulamalı gelişim programımın teknik günlüğüdür. Amacım konu listesi tüketmek değil; çalışan kod, bozuk karşı örnek, terminal kanıtı, test ve açıklanabilir mühendislik kararları üretmektir.
 
-Buradaki `Day` numaraları takvim tarihini değil, programdaki çalışma modüllerini temsil eder. Aynı gün içerisinde birden fazla modül tamamlanabilir veya bir modül birden fazla güne yayılabilir.
+## Güncel durum
 
-Repository yalnızca tamamlanmış çözümleri değil; yazdığım uygulamaları, ilk ve hatalı yaklaşımlarımı, debugging sürecini, kök neden analizlerini, testleri ve terminal kanıtlarını da içerir.
+| Alan | Durum |
+| --- | --- |
+| Tamamlanan modül | **17 / 72** |
+| Aktif paket | **Gün 18+19 — veri sözleşmeleri ve ilk Git temeli** |
+| Son gate | **G1 tamamlandı** |
+| Final proje | **Asset Intelligence Collector** |
 
-> **Çalışması tek başına yeterli değildir.**
-> Neden çalıştığını açıklayamıyorsam, hata yolunu test edemiyorsam veya farklı bir senaryoya aktaramıyorsam görev tamamlanmış sayılmaz.
-> Açıklanamayan hazır çözüm: **TIRT.**
+Gün numarası takvim tarihi değildir. Bir modül birden fazla güne yayılabilir; uyumlu iki modül aynı çalışma oturumunda tamamlanabilir. Her modül kendi kanıtı ve değerlendirmesiyle kapanır.
 
-## Hedeflenen Yetkinlikler
+## Programın altı hattı
 
-### Python
+- **Python engineering:** CLI/package tasarımı, API istemcileri, veri doğrulama, SQL, test ve concurrency.
+- **Linux diagnostics:** filesystem, process, signal, network/TLS, service, log ve sistem çağrısı teşhisi.
+- **Git, GitHub and CI:** staging modeli, anlamlı history, branch/merge, pull request, review ve otomasyon.
+- **Docker and Compose:** layer/cache, process modeli, persistence, network, health, hardening ve supply chain.
+- **Cybersecurity domain:** asset inventory, exposure, vulnerability correlation, prioritization ve threat modeling.
+- **Technical communication:** kapalı-kitap anlatım, canlı kodlama, incident teşhisi ve sistem tasarımı.
 
-- Test edilebilir fonksiyon ve modüller tasarlamak
-- CLI uygulamaları geliştirmek
-- Dosya, JSON ve CSV verisi işlemek
-- Configuration, logging, exception ve exit code sözleşmeleri kurmak
-- `subprocess`, type hint ve dataclass kullanmak
-- Unit, integration ve mock testleri yazmak
-- Concurrency ve profiling araçlarını doğru yerde kullanmak
+Tam Gün 18–72 planı için [V3 yol haritasına](docs/ROADMAP_V3.md) bakılabilir.
 
-### Linux
-
-- Path, izin, ownership ve kullanıcı modelini anlamak
-- `stdout`, `stderr` ve exit code davranışlarını yorumlamak
-- Process, PID, signal ve environment yönetmek
-- `/proc`, file descriptor ve socket bilgilerini incelemek
-- Port, DNS ve HTTP sorunlarını katmanlarına ayırmak
-- `systemd`, `journalctl` ve `strace` ile teşhis yapmak
-
-### Docker
-
-- Image, container ve process ayrımını uygulamak
-- Dockerfile ve Compose yapıları oluşturmak
-- Bind mount ve named volume kullanmak
-- Container exit code, log ve network problemlerini teşhis etmek
-- Healthcheck ve environment configuration kullanmak
-- Non-root ve tekrar üretilebilir image hazırlamak
-
-## Çalışma Yaklaşımı
+## Öğrenme yöntemi
 
 ```text
-Problem
+Semptom
    ↓
-İlk yaklaşım
+Katman ve hipotez
    ↓
-Hata veya eksik davranış
+Çalıştırmadan önce tahmin
    ↓
-Hipotez ve kanıt
+En küçük ayırıcı deney
    ↓
-Kök neden
+Kanıt ve kök neden
    ↓
 En küçük düzeltme
    ↓
-Test ve regresyon kontrolü
+Test ve karşıt vaka
+   ↓
+Kısa teknik savunma
 ```
 
-## Repository Yapısı
+Bir komutun çalışması tek başına ustalık kanıtı değildir. Yeni girdide bağımsız uygulama, farklı failure mode'a transfer ve kararın trade-off'larını açıklama aranır.
+
+## Repository yapısı
+
+Gün 1–17 tarihsel hâliyle korunur. Gün 18'den itibaren aşağıdaki tutarlı yapı kullanılır:
 
 ```text
-coreops-learning-log/
-├── README.md
-├── day-01/
-│   ├── day-01-return-and-exit-codes.md
-│   └── day01.py
-├── day-02/
-│   ├── day-02-assertions-and-command-chains.md
-│   └── day02.py
-├── day-03/
-│   ├── day-03-data-structures-and-bind-mounts.md
-│   ├── day03.py
-│   └── services.txt
-├── day-04/
-│   ├── day-04-path-cwd-bind-mount.md
-│   └── data.txt
-└── ...
+day-NN/
+├── README.md          # hedef, tahmin, deney, kritik kanıt ve öğrenme notu
+├── src/               # modüle ait uygulama kodu
+├── tests/             # otomatik kontroller
+└── fixtures/          # küçük ve güvenli örnek girdiler
 ```
 
-Her klasör, ilgili modülün kapsamına göre Python dosyalarını, teknik notları, testleri, örnek verileri ve terminal kanıtlarını içerebilir.
+Her gün dört zorunlu dosya üretmek yerine yalnız probleme gerçekten hizmet eden dosyalar eklenir. Büyük loglar, build çıktıları, sanal ortamlar, tokenlar ve `.env` dosyaları commit edilmez.
 
-> Aşağıdaki yol haritası programın planlanan kapsamını gösterir.
-> Gerçek ilerleme repository içerisindeki dosyalar ve Git commit geçmişiyle kanıtlanır.
+Yeni modül başlangıcında [günlük çalışma şablonu](templates/day/README.md) kullanılabilir. Branch, commit ve PR kuralları [Git çalışma akışında](docs/GIT_WORKFLOW.md) açıklanmıştır.
 
-# 72 Modüllük Yol Haritası
+## Tamamlanan temel
 
-## Hafta 1 — Temel Davranış ve Kanıt
+- Python return/exception/main/exit sınırları
+- Edge case ve assertion deneyleri
+- Liste, sözlük ve set seçimi
+- CWD, relative/absolute path ve import path ayrımı
+- stdout, stderr ve process exit gözlemi
+- Linux permission, UID/GID ve ownership modeli
+- `pathlib`, recursive arama ve `find` karşılaştırması
+- Docker image/container, build context, `COPY`, `CMD`, bind mount ve workdir
+- Modüler Python ve `argparse` CLI
+- Exception propagation ve application/runtime hata katmanları
 
-| Gün | Ana konu |
-| --- | --- |
-| [01](day-01/day-01-return-and-exit-codes.md) | Şartname, checklist ve `return` |
-| [02](day-02/day-02-assertions-and-command-chains.md) | Fonksiyon edge case’leri ve `assert` |
-| [03](day-03/day-03-data-structures-and-bind-mounts.md) | `list`, `dict` ve `set` seçimi |
-| [04](day-04/day-04-path-cwd-bind-mount.md) | Path, CWD, relative path ve bind mount |
-| 05 | `stdout`, `stderr`, exit code ve `docker run` |
-| 06 | Hafta 1 entegrasyon sınavı |
-| 07 | Toparlanma 1 ve hata kapatma |
+Günlük çalışmalar [`day-01`](day-01/) ile [`day-17`](day-17/) arasındaki dizinlerde görülebilir.
 
-## Hafta 2 — Dosya Sistemi, İzinler ve İlk Image
+## Final proje — Asset Intelligence Collector
 
-| Gün | Ana konu |
-| --- | --- |
-| 08 | `rwx` ve minimum `chmod` |
-| 09 | Ownership, group ve UID |
-| 10 | Context manager ve metin dosyaları |
-| 11 | `pathlib` ve `find` |
-| 12 | İlk Dockerfile |
-| 13 | Mastery Gate G1 |
-| 14 | Toparlanma 2 ve regresyon çalışması |
+Final ürün, farklı kaynaklardan gelen varlık ve zafiyet kayıtlarını toplayan küçük fakat üretime yakın bir sistem olacaktır:
 
-## Hafta 3 — Modüler Python ve CLI Temelleri
+```text
+JSON / CSV / HTTP API adapters
+              ↓
+validation + source lineage
+              ↓
+normalization + deterministic deduplication
+              ↓
+asset ↔ vulnerability correlation
+              ↓
+CVSS + EPSS + KEV + business criticality
+              ↓
+SQL persistence + CLI/API reports
+              ↓
+tests + CI + secure Docker/Compose
+```
 
-| Gün | Ana konu |
-| --- | --- |
-| 15 | Modül, import ve `src/` yapısı |
-| 16 | `argparse` ile CLI |
-| 17 | Exception ve exit code sözleşmesi |
-| 18 | JSON okuma, yazma ve doğrulama |
-| 19 | CSV ve logging |
-| 20 | Hafta 3 entegrasyon sınavı |
-| 21 | Toparlanma 3 ve hata kapatma |
+Kabul kriterleri arasında bozuk API/pagination/timeout testleri, structured logging, secret güvenliği, multi-stage image, non-root çalışma, health/readiness, SBOM, threat model ve incident runbook bulunur.
 
-## Hafta 4 — Configuration, Process ve Kalıcı Veri
+## Güvenlik sınırı
 
-| Gün | Ana konu |
-| --- | --- |
-| 22 | Environment variables ve `PATH` |
-| 23 | Configuration precedence |
-| 24 | Process ve PID |
-| 25 | Signal yönetimi |
-| 26 | Named volume ve bind mount |
-| 27 | Mastery Gate G2 |
-| 28 | Toparlanma 4 ve regresyon çalışması |
+Network ve güvenlik deneyleri yalnızca sahip olduğum veya açıkça izin verilmiş yerel laboratuvar ortamlarında yapılır. Gerçek token, parola, özel anahtar, müşteri verisi veya yetkisiz hedef bilgisi bu repoya eklenmez.
 
-## Hafta 5 — Subprocess ve Sistem Sınırları
+## Bu repository nasıl incelenebilir?
 
-| Gün | Ana konu |
-| --- | --- |
-| 29 | `subprocess.run` |
-| 30 | Subprocess `stdout` ve `stderr` modeli |
-| 31 | Timeout ve process cleanup |
-| 32 | Dataclass ve type hints |
-| 33 | Port, socket, DNS ve HTTP |
-| 34 | Hafta 5 entegrasyon sınavı |
-| 35 | Toparlanma 5 ve hata kapatma |
+1. README'den aktif kapsamı kontrol edin.
+2. İlgili `day-NN/` dizinindeki tahmin ve karşıt vakayı okuyun.
+3. Kod/test ile teknik notun aynı sonucu destekleyip desteklemediğine bakın.
+4. Commit geçmişinden yaklaşımın nasıl geliştiğini inceleyin.
+5. Gate ve final çalışmalarında farklı becerilerin tek vaka üzerinde nasıl birleştiğini takip edin.
 
-## Hafta 6 — Docker Compose ve Entegrasyon
-
-| Gün | Ana konu |
-| --- | --- |
-| 36 | Docker Compose service modeli |
-| 37 | Docker Compose network |
-| 38 | Persistent data yönetimi |
-| 39 | Integration test |
-| 40 | Log korelasyonu |
-| 41 | Mastery Gate G3 |
-| 42 | Toparlanma 6 ve regresyon çalışması |
-
-## Hafta 7 — Test Tasarımı ve Refactoring
-
-| Gün | Ana konu |
-| --- | --- |
-| 43 | Pytest fixture tasarımı |
-| 44 | Mocking sınırı |
-| 45 | Dependency injection |
-| 46 | Characterization test |
-| 47 | Refactoring ve typing |
-| 48 | Hafta 7 entegrasyon sınavı |
-| 49 | Toparlanma 7 ve hata kapatma |
-
-## Hafta 8 — Linux Teşhis Araçları
-
-| Gün | Ana konu |
-| --- | --- |
-| 50 | `systemd` unit kavramı |
-| 51 | `journalctl` filtreleri |
-| 52 | `/proc` filesystem |
-| 53 | File descriptor |
-| 54 | `strace` ile sistem çağrısı teşhisi |
-| 55 | Mastery Gate G4 |
-| 56 | Toparlanma 8 ve regresyon çalışması |
-
-## Hafta 9 — Concurrency, Mimari ve Ölçüm
-
-| Gün | Ana konu |
-| --- | --- |
-| 57 | Generator ve kontrollü veri akışı |
-| 58 | Thread tabanlı I/O ve final kapsamı |
-| 59 | Process tabanlı CPU işleri ve ADR |
-| 60 | `asyncio` ve final veri modeli |
-| 61 | Profiling ve ölçüme dayalı optimizasyon |
-| 62 | Mastery Gate G5 |
-| 63 | Toparlanma 9 ve final açıklarını kapatma |
-
-## Final Aşaması — CoreOps Toolkit
-
-| Gün | Ana konu |
-| --- | --- |
-| 64 | Final package, CLI, config ve logging |
-| 65 | Final subprocess runner ve collector |
-| 66 | Deterministik JSON ve insan raporu |
-| 67 | Final unit, integration ve mock testleri |
-| 68 | Final Dockerfile, Compose, healthcheck ve non-root |
-| 69 | Failure injection, benchmark ve final prova |
-| 70 | Toparlanma 10 ve kritik açıkları kapatma |
-| 71 | Code freeze, temiz kurulum ve adversarial prova |
-| 72 | Final sınavı, demo ve teknik savunma |
-
-# Final Projesi — CoreOps Toolkit
-
-Programın final çıktısı; yerel Linux sisteminden izin verilen operasyonel bilgileri toplayan, normalize eden ve raporlayan modüler bir CLI aracıdır.
-
-Planlanan kapsam; modüler Python paketi, CLI, configuration precedence, structured logging, custom exceptions, güvenli subprocess yönetimi, deterministik raporlar, testler, Dockerfile, Compose, healthcheck, non-root container, failure injection ve profiling çalışmalarını içerir.
-
-## Not
-
-Bu repository, “72 modülde uzman oldum” iddiası değildir.
-
-Ne çalıştığımı, nerede hata yaptığımı, hataları nasıl teşhis ettiğimi ve kod yaklaşımımın zaman içinde nasıl değiştiğini gösteren açık bir gelişim kaydıdır.
+Bu repository “72 modülde uzman oldum” iddiası değil; neyi gerçekten uyguladığımı, nerede yanıldığımı ve zihinsel modelimi kanıtla nasıl düzelttiğimi gösteren açık bir gelişim kaydıdır.

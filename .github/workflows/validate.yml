@@ -1,0 +1,80 @@
+name: Validate learning log
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  repository-hygiene:
+    name: Repository hygiene
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          fetch-depth: 0
+
+      - name: Reject generated and sensitive filenames
+        shell: bash
+        run: |
+          set -euo pipefail
+          tracked_bad_files="$({
+            git ls-files \
+              | grep -E '(^|/)(\.DS_Store|\.env($|\.)|__pycache__/|.*\.py[co]$)' \
+              | grep -Ev '(^|/)\.env\.example$' \
+              || true
+          })"
+          if [[ -n "$tracked_bad_files" ]]; then
+            echo "Tracked generated or sensitive filenames found:"
+            echo "$tracked_bad_files"
+            exit 1
+          fi
+
+      - name: Check whitespace introduced by this change
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          BEFORE_SHA: ${{ github.event.before }}
+          CURRENT_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          if [[ "$EVENT_NAME" == "pull_request" ]]; then
+            git diff --check "$BASE_SHA...$HEAD_SHA"
+          elif [[ -z "$BEFORE_SHA" || "$BEFORE_SHA" =~ ^0+$ ]]; then
+            git show --check --format= "$CURRENT_SHA"
+          else
+            git diff --check "$BEFORE_SHA...$CURRENT_SHA"
+          fi
+
+  python-syntax:
+    name: Python syntax
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.12"
+
+      - name: Compile tracked Python files
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t python_files < <(git ls-files '*.py')
+          python -m py_compile "${python_files[@]}"
