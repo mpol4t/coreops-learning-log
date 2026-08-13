@@ -1,0 +1,6 @@
+WARNING: event=record_rejected, source=json, error=Port değerinin tipi integer değil!
+WARNING: event=record_rejected, source=json, error=Gereken hostname parametresi bulunamadı.
+WARNING: event=record_rejected, source=csv, error=invalid literal for int() with base 10: 'abc'
+WARNING: event=record_rejected, source=csv, error=Port belirtilen aralıklarda değil!
+WARNING: event=record_rejected, source=csv, error=Girilen veri değeri boolean değil!
+INFO: event=processing_complete, JSON_accepted=1, JSON_rejected=2, CSV_accepted=2, CSV_rejected=3, TOTAL_accepted=3, TOTAL_rejected=5

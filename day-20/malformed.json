@@ -1,0 +1,7 @@
+[
+  {
+    "asset_id": "srv-broken",
+    "hostname": "broken.internal",
+    "port": 443,
+    "active": true
+  }

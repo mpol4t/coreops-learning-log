@@ -1,0 +1,6 @@
+asset_id,hostname,port,active
+srv-101,web.internal,443,true
+srv-102,db.internal,abc,true
+srv-103,admin.internal,70000,false
+srv-104,legacy.internal,8080,maybe
+srv-105,dns.internal,53,true

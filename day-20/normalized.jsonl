@@ -1,0 +1,3 @@
+{"asset_id": "srv-001", "hostname": "api.internal", "source": "json", "port": 443, "active": true}
+{"asset_id": "srv-101", "hostname": "web.internal", "port": 443, "active": true, "source": "csv"}
+{"asset_id": "srv-105", "hostname": "dns.internal", "port": 53, "active": true, "source": "csv"}

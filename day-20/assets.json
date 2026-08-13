@@ -1,0 +1,19 @@
+[
+  {
+    "asset_id": " srv-001 ",
+    "hostname": " api.internal ",
+    "port": 443,
+    "active": true
+  },
+  {
+    "asset_id": "srv-002",
+    "hostname": "db.internal",
+    "port": "443",
+    "active": true
+  },
+  {
+    "asset_id": "srv-003",
+    "port": 8080,
+    "active": false
+  }
+]
