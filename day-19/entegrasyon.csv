@@ -1,0 +1,5 @@
+asset_id,hostname,port,active
+srv-001,api.internal,443,true
+srv-002,db.internal,5432,false
+srv-003,old.internal,8080,maybe
+srv-004,cache.internal,70000,true

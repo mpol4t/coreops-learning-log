@@ -1,0 +1,5 @@
+INFO: event=record_accepted, asset_id=srv-001
+INFO: event=record_accepted, asset_id=srv-002
+WARNING: event=record_rejected, asset_id=srv-003, reason=Boolean tipi yanlış!
+WARNING: event=record_rejected, asset_id=srv-004, reason=Port değeri geçerli aralıkta değil!
+INFO: event=processing_complete, accepted=2, rejected=2

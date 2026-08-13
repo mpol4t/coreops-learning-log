@@ -1,0 +1,6 @@
+{
+  "asset_id": "srv-001",
+  "port": 443,
+  "active": true,
+  "tags": ["prod", "api"]
+}
