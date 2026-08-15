@@ -1,0 +1,10 @@
+[project]
+name = "day23-dependency-test"
+version = "0.1.0"
+
+dependencies = [
+    "rich>=15.0.0"
+]
+
+[tool.setuptools]
+py-modules = ["day23"]

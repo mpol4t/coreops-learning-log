@@ -1,0 +1,7 @@
+.venv/
+.venv-clean/
+build/
+*.egg-info/
+__pycache__/
+*.pyc
+.DS_Store
