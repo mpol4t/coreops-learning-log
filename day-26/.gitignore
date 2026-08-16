@@ -1,0 +1,6 @@
+bind-data/
+empty-data/
+disk-lab/
+__pycache__/
+*.pyc
+.DS_Store
