@@ -1,0 +1,9 @@
+[
+  {
+    "asset_id": "srv-001",
+    "hostname": "api.internal",
+    "port": 443,
+    "active": true,
+    "tags": ["prod", 53, "api"]
+  }
+]

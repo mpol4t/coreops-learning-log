@@ -1,0 +1,23 @@
+[
+  {
+    "asset_id": "srv-001",
+    "hostname": "api.internal",
+    "port": 443,
+    "active": true,
+    "tags": ["prod", "api"]
+  },
+  {
+    "asset_id": "srv-002",
+    "hostname": "db.internal",
+    "port": 5432,
+    "active": false,
+    "tags": ["database", "internal"]
+  },
+  {
+    "asset_id": "srv-003",
+    "hostname": "web.internal",
+    "port": 80,
+    "active": true,
+    "tags": ["web", "prod"]
+  }
+]
