@@ -1,0 +1,7 @@
+tests/MARKER
+tests/SHOULD_NOT_EXIST
+MARKER
+SHOULD_NOT_EXIST
+__pycache__/
+*.pyc
+.DS_Store
