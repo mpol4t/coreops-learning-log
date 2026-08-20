@@ -1,0 +1,11 @@
+[
+  {
+    "asset_id": "   ",
+    "hostname": "server01",
+    "port": 443,
+    "active": true,
+    "tags": [
+      "web"
+    ]
+  }
+]

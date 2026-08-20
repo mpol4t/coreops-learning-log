@@ -1,0 +1,29 @@
+# Exported from the original Day31 nested Git lab before packaging.
+# The .git directory is intentionally NOT embedded in the parent learning-log repo.
+
+## git status --short --branch
+## master
+
+## git branch -vv
+  feature/retry-policy fff1e00 feature yeni timeout = 70
+* master               2d4343c Revert "yanlis timeout ayari"
+
+## git log --graph --oneline --decorate --all
+* 2d4343c (HEAD -> master) Revert "yanlis timeout ayari"
+* 0eca7bb yanlis timeout ayari
+* f5bef92 master yeni timeout = 50
+*   dcce60f Merge branch 'feature/retry-policy'
+|\  
+* | 6faa404 app.py içi 30 oldu
+| | * fff1e00 (feature/retry-policy) feature yeni timeout = 70
+| |/  
+| * ca72618 app.py içi 20 oldu
+|/  
+* 463bba5 initial commit
+
+## master:app.py
+timeout = 50
+
+## feature/retry-policy:app.py
+timeout = 70
+

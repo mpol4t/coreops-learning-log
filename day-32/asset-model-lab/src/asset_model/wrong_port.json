@@ -1,0 +1,11 @@
+[
+  {
+    "asset_id": "server01",
+    "hostname": "server01",
+    "port": 65536,
+    "active": true,
+    "tags": [
+      "web"
+    ]
+  }
+]
