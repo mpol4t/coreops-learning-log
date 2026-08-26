@@ -1,0 +1,10 @@
+services:
+  app:
+    image: python:3.13-slim
+    working_dir: /lab
+    volumes:
+      - .:/lab:ro
+    environment:
+      APP_MODE: compose-lab
+      WORKER_NAME: Polat
+    command: ["python", "show_env.py"]

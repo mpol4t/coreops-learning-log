@@ -1,0 +1,20 @@
+services:
+  api:
+    image: python:3.13-slim
+    working_dir: /site
+    volumes:
+      - ./api:/site:ro
+    command:
+      - python
+      - -m 
+      - http.server
+      - "8000"
+      - --bind
+      - "0.0.0.0"
+
+  client:
+    image: python:3.13-slim
+    working_dir: /app
+    volumes:
+      - ./client.py:/app/client.py:ro
+    command: ["sleep", "infinity"]
