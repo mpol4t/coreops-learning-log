@@ -1,78 +1,71 @@
-# CoreOps V3 Roadmap
+# CoreOps V3.7 Roadmap
 
-Bu yol haritası Gün 18'den itibaren geçerlidir. Önceki planla çelişen konularda bu belge üstündür.
+Bu yol haritası Gün 34'ten itibaren geçerlidir. İlk kez görülen yoğun konular gerektiğinde A/B oturumlarına ayrılır; B basamağı en erken sonraki çalışma gününde tamamlanır. Konu listesi değil, bağımsız uygulama ve kanıt kapanışı esastır.
 
-## Hızlandırılmış çalışma düzeni
+## Güncel durum
 
-22 Eylül hedefi için izin verilen çift paketler:
+- Son tamamlanan oturum: **Gün 37B — Compose network ve service DNS**
+- Aktif paket: **Gün 38+39 — SQL/persistence ve API–DB entegrasyonu**
+- Kesin hedef: Aksama veya zorunlu telafi olmazsa **20 Eylül 2026**
+- Gün 34B–37B foundation oturumları tek çalışılır; geriye dönük birleştirilmez.
+
+İzin verilen çift paketler:
 
 ```text
-18+19   21+22   23+24   25+26
-29+30   31+32   35+36   37+38
-43+44   45+46   50+51   52+53
-57+58
+38+39   42+43   44+45   46+47
+49+50   51+52   53+54   56+57
+58+59   60+61   63+64   65+66
+67+68
 ```
 
-Çift pakette iki modül ayrı başarı kriteri ve ayrı değerlendirme kaydı taşır. Gate ve final günleri başka modülle birleştirilmez. Kritik açık oluşursa paket bölünür; mastery hedef tarihten önceliklidir.
+Çift pakette iki modül ayrı başarı kriteri ve ayrı değerlendirme kaydı taşır. İlk modül kapanmadan ikincisi kanonik ilerleme sağlamaz. Gate, prova ve final başka modülle birleşmez. Kritik açık oluşursa paket bölünür; üçlü paket yapılmaz.
 
-## Gün 18–27 — Data, Git ve sistem temeli
+## Gün 34–41 — Network, API, Compose ve veri tabanı
 
-| Gün | Birincil konu | Zorunlu bağlantı |
-| ---: | --- | --- |
-| 18 | JSON syntax/semantik; parse → validate → output | `jq`; working tree–index–`HEAD`; `diff --staged` |
-| 19 | CSV/JSONL ve structured logging | `tee`, `tail`, `grep -E`, temel `awk`; `git log/show` |
-| 20 | Veri sözleşmesi entegrasyon sınavı | Bozuk veri teşhisi ve kapalı-kitap sözlü tur |
-| 21 | CAASM ve asset-intelligence girişi | Asset, inventory, attack surface, exposure ve vulnerability |
-| 22 | Environment, `PATH` ve secret sınırı | `env`, `printenv`, `command -v`, `type`, `.gitignore` |
-| 23 | Config, dependency yönetimi ve image cache | `venv`, `pip`, `pyproject.toml`; layer/cache, `docker history`, `.dockerignore` |
-| 24 | Process/PID ve kaynak gözlemi | `ps`, `pgrep`, `pstree`, `/proc`, parent-child |
-| 25 | Signal, job control ve graceful shutdown | `jobs`, `wait`, `kill -TERM`, Docker PID 1 |
-| 26 | Filesystem/persistence ve named volume | `stat`, `du`, `df`, mount/ownership, bind vs named volume |
-| 27 | Gate G2 | Python + Linux + Git + Docker canlı teşhis |
+| Gün/oturum | Ana öğrenme | Linux hattı | Docker/Compose hattı |
+| ---: | --- | --- | --- |
+| 34A | URL parçaları, `urlparse`, `getaddrinfo`, `gaierror` | `getent hosts` ile resolver kanıtı | — |
+| 34B | Minimal TCP bağlantısı, timeout, peer ve socket cleanup | `ss -tnp` | — |
+| 35A | TLS handshake ve TCP/TLS hata ayrımı | `openssl s_client` | — |
+| 35B | Minimal HTTP ve dört katmanlı failure isolation | `curl -v`, kontrollü packet gözlemi | PID 1/volume tekrarı, yerel HTTP hedefi, port publishing |
+| 36A | Tek HTTP isteği, header, status ve JSON cevap | `curl` ile ikinci kanıt | — |
+| 36B | Auth, timeout, pagination, retry/backoff ve 429 | ENV/token sınırı | — |
+| 37A | Compose YAML, service, image/build, environment ve lifecycle | Compose loglarını süzme | İlk gerçek Compose servisi |
+| 37B | Service DNS, user-defined network ve port ayrımı | Host/container DNS ve socket kanıtı | Compose network/service discovery |
+| 38 | SQLite/PostgreSQL, sorgular ve transaction | DB dosyası/UID/ownership | DB service, named volume, backup/restore |
+| 39 | API–DB integration ve contract test | Test process/port kanıtı | İzole test DB/Compose profili |
+| 40 | Structured log ve correlation ID | `jq`, `grep`, `tail` | `docker compose logs` |
+| 41 | Gate G3 | Network/API/SQL canlı teşhis | Compose arıza vakası |
 
-## Gün 28–41 — Subprocess, network, API, SQL ve Compose
-
-| Gün | Birincil konu | Zorunlu bağlantı |
-| ---: | --- | --- |
-| 28 | Gate toparlanması ve mock interview | En zayıf iki beceriyi yeni vakada kapatma |
-| 29 | Güvenli `subprocess` ve argv | `shell=True`/injection karşıtı deney; branch/switch |
-| 30 | Child process contract ve cleanup | Timeout, process group ve kontrollü sonlandırma |
-| 31 | Git branch/merge/conflict ve geri alma | `restore`, `revert`, kayıpsız conflict çözümü |
-| 32 | Data model, type hints ve package kalitesi | Dataclass/schema, `ruff`, `mypy` |
-| 33 | IP/CIDR, route, DNS, TCP, HTTP ve TLS | `ip`, `ss`, `curl`, `dig/getent`, `openssl s_client` |
-| 34 | Network/API entegrasyon sınavı | DNS–TCP–TLS–HTTP hata katmanları |
-| 35 | Packet gözlemi ve ağ mülakatı | Kontrollü `tcpdump` ve HTTP trace |
-| 36 | HTTP API client ve Compose service/config | Token, pagination, timeout, retry/backoff, rate limit |
-| 37 | Docker network, port ve service discovery | Compose DNS; refused/timeout/DNS ayrımı |
-| 38 | SQLite/PostgreSQL ve persistent volume | `SELECT`, `WHERE`, `JOIN`, `GROUP BY`, transaction, backup |
-| 39 | API/database integration tests | Contract test ve pull-request/review akışı |
-| 40 | Log correlation ve güvenlik verisi | Correlation ID, SIEM; CVE/CVSS/EPSS/KEV |
-| 41 | Gate G3 | API + network + SQL + Compose + Git canlı vaka |
-
-## Gün 42–55 — Test, secure SDLC ve production Linux
+## Gün 42–49 — Test, secure SDLC ve CI
 
 | Gün | Birincil konu | Zorunlu bağlantı |
 | ---: | --- | --- |
-| 42 | Sistem tasarımı ve toparlanma | Adapter/data-flow/trust-boundary çizimi |
+| 42 | Küçük sistem tasarımı | Adapter/data-flow/trust-boundary; process/env/file/service sınırları |
 | 43 | Pytest fixture/parametrize/coverage | Boundary ve malicious-input testleri |
 | 44 | External API mocking ve contract | Timeout, 429, 5xx, invalid JSON, pagination |
-| 45 | Dependency injection ve threat modeling | Trust boundary, token/secret, least privilege |
+| 45 | Dependency injection ve threat modeling | Trust boundary, token/secret, non-root/read-only ve least privilege |
 | 46 | Characterization/refactor ve static analysis | `ruff`, `mypy`, `bandit`, `pip-audit` |
-| 47 | GitHub PR/review/CI ve supply chain | Test+lint+type+scan+Docker build; SBOM |
+| 47 | GitHub Actions ve supply chain | Test+lint+type+scan+Docker build; SBOM temeli |
 | 48 | Secure-SDLC sınavı | Bozuk CI/log ve Git conflict canlı vaka |
 | 49 | Kalite toparlanması | En düşük iki beceriyi yeni kanıtla kapatma |
-| 50 | `systemd` unit ve least privilege | User/group, env file, restart ve sandbox seçenekleri |
-| 51 | `journalctl` ve log lifecycle | Filtre, zaman aralığı, follow, rotation, disk etkisi |
-| 52 | `/proc`, cgroup ve resource gözlemi | CPU/memory ve container limitleri |
-| 53 | File descriptor, socket ve `lsof` | FD leak/open file/listening socket ayrımı |
-| 54 | Katmanlı production teşhisi | `strace`, `curl`, `openssl`, `tcpdump` |
-| 55 | Gate G4 | Linux incident + Docker teşhis + sözlü savunma |
 
-## Gün 56–72 — Performans, final ürün ve mülakat
+## Gün 50–56 — Production Linux ve Docker incident
+
+| Gün | Birincil konu | Docker bağlantısı |
+| ---: | --- | --- |
+| 50 | `systemd` unit ve least privilege | User/group, env file, restart ve sandbox seçenekleri |
+| 51 | `journalctl` ve log lifecycle | `docker logs`, rotation ve disk etkisi |
+| 52 | `/proc`, cgroup ve resource gözlemi | CPU/memory limits, throttling ve OOM modeli |
+| 53 | File descriptor, socket ve `lsof` | Container içi socket/FD görünürlüğü |
+| 54 | Katmanlı production teşhisi | Namespace bağlamında `strace`, `curl`, `openssl`, `tcpdump` |
+| 55 | Gate G4 | Linux incident + Docker runtime/resource arızası |
+| 56 | Mock interview ve hedefli toparlanma | Yalnız kanıtlanan açıklar |
+
+## Gün 57–63 — Performans, concurrency ve orkestrasyon
 
 | Gün | Birincil konu | Zorunlu bağlantı |
 | ---: | --- | --- |
-| 56 | Toparlanma ve mock interview | 30 dakikalık karma teknik görüşme |
 | 57 | Generator/streaming ile büyük veri | Büyük JSONL/CSV, memory ölçümü, backpressure |
 | 58 | Thread ile paralel API I/O | Thread safety, shared state, connection pool |
 | 59 | Process ile CPU işi | Asset normalization/dedup, IPC maliyeti |
@@ -80,6 +73,11 @@ Bu yol haritası Gün 18'den itibaren geçerlidir. Önceki planla çelişen konu
 | 61 | Profiling ve benchmark | CPU/RSS ölçümü; ölçmeden optimizasyon yapmama |
 | 62 | Gate G5 | Sync/thread/async tasarım savunması |
 | 63 | Kubernetes okuryazarlığı | Pod, Deployment, Service, ConfigMap, Secret, logs/describe |
+
+## Gün 64–72 — Final Asset Intelligence Collector
+
+| Gün | Final parçası | Linux/Docker/Git kanıtı |
+| ---: | --- | --- |
 | 64 | Final package/CLI/config/log | Collector iskeleti, ADR ve branch planı |
 | 65 | Final API/subprocess adapter | Auth, pagination, retry, rate limit, source lineage |
 | 66 | Normalize/dedup/correlate/prioritize | SQL + CVSS/EPSS/KEV/business criticality |
@@ -89,6 +87,10 @@ Bu yol haritası Gün 18'den itibaren geçerlidir. Önceki planla çelişen konu
 | 70 | Prova açıklarını kapatma | Yalnız bulunan eksikler üzerinde çalışma |
 | 71 | Hardening/code freeze/release | Threat model, SBOM, changelog, tag, runbook |
 | 72 | Final sınav | Demo, failure diagnosis ve 45 dakikalık teknik görüşme |
+
+## Süreklilik kuralı
+
+Linux hattı network araçlarıyla, log korelasyonuyla, Gün 50–55 production teşhisiyle ve performans ölçümleriyle devam eder. Docker/Compose hattı DB persistence, integration test, CI build/scan, cgroup/resource incident, Kubernetes eşlemesi ve production image/release aşamalarına ilerler. Sırf container çalıştırmış olmak için Docker kullanılmaz; buna karşılık beş öğretim oturumundan uzun süre yeni Linux veya Docker mekanizması görülmeden geçilmez.
 
 ## Mastery kapısı
 

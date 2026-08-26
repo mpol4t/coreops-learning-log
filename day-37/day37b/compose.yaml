@@ -6,7 +6,7 @@ services:
       - ./api:/site:ro
     command:
       - python
-      - -m 
+      - -m
       - http.server
       - "8000"
       - --bind

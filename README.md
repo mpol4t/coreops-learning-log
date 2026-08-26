@@ -10,9 +10,10 @@ Bu repository, 72 mantıksal modülden oluşan uygulamalı gelişim programımı
 
 | Alan | Durum |
 | --- | --- |
-| Tamamlanan modül | **17 / 72** |
-| Aktif paket | **Gün 18+19 — veri sözleşmeleri ve ilk Git temeli** |
-| Son gate | **G1 tamamlandı** |
+| Son tamamlanan oturum | **Gün 37B — Compose network ve service DNS** |
+| Aktif paket | **Gün 38+39 — SQL/persistence ve API–DB entegrasyonu** |
+| Son gate | **G2 tamamlandı** |
+| Hedef | **20 Eylül 2026 — Gün 72 finali** |
 | Final proje | **Asset Intelligence Collector** |
 
 Gün numarası takvim tarihi değildir. Bir modül birden fazla güne yayılabilir; uyumlu iki modül aynı çalışma oturumunda tamamlanabilir. Her modül kendi kanıtı ve değerlendirmesiyle kapanır.
@@ -52,7 +53,7 @@ Bir komutun çalışması tek başına ustalık kanıtı değildir. Yeni girdide
 
 ## Repository yapısı
 
-Gün 1–17 tarihsel hâliyle korunur. Gün 18'den itibaren aşağıdaki tutarlı yapı kullanılır:
+Gün 1–17 tarihsel hâliyle korunur. Sonraki çalışmalar probleme göre küçük ve kanıt odaklı dizinler kullanır:
 
 ```text
 day-NN/
@@ -78,8 +79,15 @@ Yeni modül başlangıcında [günlük çalışma şablonu](templates/day/README
 - Docker image/container, build context, `COPY`, `CMD`, bind mount ve workdir
 - Modüler Python ve `argparse` CLI
 - Exception propagation ve application/runtime hata katmanları
+- JSON/CSV/JSONL sözleşmeleri, structured logging ve `jq`
+- Git working tree–index–`HEAD`, branch, merge ve conflict çözümü
+- Child process, signal, process group ve kontrollü cleanup
+- URL, DNS, TCP, TLS ve HTTP hata katmanları
+- API auth, timeout, pagination, retry/backoff ve cevap doğrulama
+- Docker PID 1, port publishing, bind/named volume ve persistence
+- Compose service/config/lifecycle, user-defined network ve service DNS
 
-Günlük çalışmalar [`day-01`](day-01/) ile [`day-17`](day-17/) arasındaki dizinlerde görülebilir.
+Günlük çalışmalar [`day-01`](day-01/) ile [`day-37`](day-37/) arasındaki dizinlerde görülebilir. A/B oturumları, ilk kez görülen yoğun konuları temel alıştırma ve bağımsız uygulama olarak iki basamağa ayırır.
 
 ## Final proje — Asset Intelligence Collector
 
