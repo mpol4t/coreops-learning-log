@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:18
+    environment:
+      POSTGRES_USER: coreops
+      POSTGRES_PASSWORD: coreops-lab
+      POSTGRES_DB: coreops
+    ports:
+      - "127.0.0.1:15432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql
+      - ./sql:/lab/sql:ro
+
+volumes:
+    pgdata:
