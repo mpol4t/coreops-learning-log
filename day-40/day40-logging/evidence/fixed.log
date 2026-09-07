@@ -1,0 +1,6 @@
+app-1  | 2026-09-07T23:33:48.062795506Z WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+app-1  | 2026-09-07T23:33:48.193300215Z level=INFO request_id=f7352678-115b-48f9-aa19-a10dd03e3d10 event=request_started owner=blue-team row_count=- error_type=-
+app-1  | 2026-09-07T23:33:48.193312256Z level=INFO request_id=f7352678-115b-48f9-aa19-a10dd03e3d10 event=db_connect_started owner=blue-team row_count=- error_type=-
+app-1  | 2026-09-07T23:33:48.197725048Z level=INFO request_id=f7352678-115b-48f9-aa19-a10dd03e3d10 event=db_query_started owner=blue-team row_count=- error_type=-
+app-1  | 2026-09-07T23:33:48.198698840Z level=INFO request_id=f7352678-115b-48f9-aa19-a10dd03e3d10 event=db_query_ok owner=blue-team row_count=2 error_type=-
+app-1  | 2026-09-07T23:33:48.198703673Z level=INFO request_id=f7352678-115b-48f9-aa19-a10dd03e3d10 event=request_completed owner=blue-team row_count=- error_type=-

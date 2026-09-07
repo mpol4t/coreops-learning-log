@@ -1,0 +1,41 @@
+services:
+  db:
+    image: postgres:16
+
+    environment:
+      POSTGRES_USER: coreops
+      POSTGRES_PASSWORD: coreops
+      POSTGRES_DB: coreops
+
+    volumes:
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./sql/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U coreops -d coreops"]
+      interval: 2s
+      timeout: 2s
+      retries: 10
+
+  app:
+    image: python:3.13-slim
+
+    working_dir: /lab
+
+    volumes:
+      - ./src:/lab/src:ro
+
+    environment:
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_NAME: coreops
+      DB_USER: coreops
+      DB_PASSWORD: coreops
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+    command: >
+      sh -c "pip install -q 'psycopg[binary]'
+      && python src/worker.py blue-team"

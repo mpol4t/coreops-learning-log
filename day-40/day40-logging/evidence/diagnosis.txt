@@ -1,0 +1,6 @@
+affected_request_id: 5ddc819e-6c68-4437-9ff9-74a9a9d9051c
+first_failed_event: db_query_failed
+last_successful_event: db_query_started
+error_type: UndefinedColumn
+failure_boundary: SQL query execution
+evidence: DB connection succeeded and db_query_started was logged before db_query_failed. The failure type is UndefinedColumn and the process exited with code 1.
