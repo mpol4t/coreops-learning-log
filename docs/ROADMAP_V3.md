@@ -1,5 +1,7 @@
 # CoreOps V3.7 Roadmap
 
+> Tarihsel arşiv — 8 Eylül 2026'dan itibaren [V4 planı](ROADMAP_V4.md) geçerlidir. Aşağıdaki durum, tarih ve kapsam güncel görev talimatı değildir.
+
 Bu yol haritası Gün 34'ten itibaren geçerlidir. İlk kez görülen yoğun konular gerektiğinde A/B oturumlarına ayrılır; B basamağı en erken sonraki çalışma gününde tamamlanır. Konu listesi değil, bağımsız uygulama ve kanıt kapanışı esastır.
 
 ## Güncel durum

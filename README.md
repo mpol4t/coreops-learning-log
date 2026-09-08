@@ -1,126 +1,56 @@
 # CoreOps Learning Log
 
-> Python engineering, Linux diagnostics, Git/CI, Docker/Compose and cybersecurity product engineering — learned through reproducible experiments.
+> Python, Linux and Docker — learning through small lessons, practical code and repeatable tests.
 
 [![Validate learning log](https://github.com/mpol4t/coreops-learning-log/actions/workflows/validate.yml/badge.svg)](https://github.com/mpol4t/coreops-learning-log/actions/workflows/validate.yml)
 
-Bu repository, 72 mantıksal modülden oluşan uygulamalı gelişim programımın teknik günlüğüdür. Amacım konu listesi tüketmek değil; çalışan kod, bozuk karşı örnek, terminal kanıtı, test ve açıklanabilir mühendislik kararları üretmektir.
+Bu repository uygulamalı gelişim günlüğümdür. Eski 72 modüllük rota tarihsel referanstır; güncel odak Python/Linux/Docker, Git ve CI ise destekleyici iş akışıdır.
 
-## Güncel durum
+## Güncel durum — 8 Eylül 2026
 
 | Alan | Durum |
 | --- | --- |
-| Son tamamlanan oturum | **Gün 37B — Compose network ve service DNS** |
-| Aktif paket | **Gün 38+39 — SQL/persistence ve API–DB entegrasyonu** |
-| Son gate | **G2 tamamlandı** |
-| Hedef | **20 Eylül 2026 — Gün 72 finali** |
-| Final proje | **Asset Intelligence Collector** |
+| Mentor ve kanonik son onay | Gün 40 GEÇTİ — 97/100; zorunlu telafi yok |
+| Sıradaki oturum | V4-01: önceki becerilerden kısa bağımsız kontrol; henüz tamamlanmadı |
+| Hedef bitiş/değerlendirme | 21 Eylül 2026 |
+| Final ürün | Genel Veri İşleyici CLI |
+| Yürürlükteki plan | [CoreOps V4](docs/ROADMAP_V4.md) |
 
-Gün numarası takvim tarihi değildir. Bir modül birden fazla güne yayılabilir; uyumlu iki modül aynı çalışma oturumunda tamamlanabilir. Her modül kendi kanıtı ve değerlendirmesiyle kapanır.
+Mentorun onayı ile kodun repoya yüklenmesi farklı kayıtlardır. Bu doküman güncellemesi Day 40 kodunun yüklenmiş olduğunu iddia etmez. Geçmiş başarılar korunur; ertelenen konular tamamlanmış sayılmaz.
 
-## Programın altı hattı
+## Üç ana alan
 
-- **Python engineering:** CLI/package tasarımı, API istemcileri, veri doğrulama, SQL, test ve concurrency.
-- **Linux diagnostics:** filesystem, process, signal, network/TLS, service, log ve sistem çağrısı teşhisi.
-- **Git, GitHub and CI:** staging modeli, anlamlı history, branch/merge, pull request, review ve otomasyon.
-- **Docker and Compose:** layer/cache, process modeli, persistence, network, health, hardening ve supply chain.
-- **Cybersecurity domain:** asset inventory, exposure, vulnerability correlation, prioritization ve threat modeling.
-- **Technical communication:** kapalı-kitap anlatım, canlı kodlama, incident teşhisi ve sistem tasarımı.
+- Python: CLI/fonksiyon tasarımı, JSON/HTTP/SQL, test, streaming, küçük thread I/O uygulaması.
+- Linux: gerçek Ubuntu üzerinde service, log, process, izin, dosya tanıtıcıları ve kaynak teşhisi.
+- Docker: image/layer/cache, process, volume, network, Compose readiness, restore, limits ve multi-stage.
+- Git/CI: kısa diff/commit/PR akışı ve gerçek test/build otomasyonu.
 
-Tam Gün 18–72 planı için [V3 yol haritasına](docs/ROADMAP_V3.md) bakılabilir.
+Güvenlik alan projesi, CVSS/EPSS/KEV, threat model ve SBOM bu dönemin zorunlu kapsamı değildir. Ayrıntılı multiprocessing/asyncio ve Kubernetes sonrasına bırakılmıştır.
 
 ## Öğrenme yöntemi
 
-```text
-Semptom
-   ↓
-Katman ve hipotez
-   ↓
-Çalıştırmadan önce tahmin
-   ↓
-En küçük ayırıcı deney
-   ↓
-Kanıt ve kök neden
-   ↓
-En küçük düzeltme
-   ↓
-Test ve karşıt vaka
-   ↓
-Kısa teknik savunma
-```
+Kısa açıklama → 1–2 dar resmi kaynak → açıklamalı çalışan örnek → rehberli küçük değişiklik → bağımsız mini lab → mevcut projeye ekleme.
 
-Bir komutun çalışması tek başına ustalık kanıtı değildir. Yeni girdide bağımsız uygulama, farklı failure mode'a transfer ve kararın trade-off'larını açıklama aranır.
+İlk kez görülen kütüphane doğrudan büyük labda kullanılmaz. İlerleme süre doldurmaya değil küçük bağımsız uygulamaya dayanır. Ders ve araştırma günlük süreye dahildir.
 
-## Repository yapısı
+## Teslim ve repository yapısı
 
-Gün 1–17 tarihsel hâliyle korunur. Sonraki çalışmalar probleme göre küçük ve kanıt odaklı dizinler kullanır:
+Kod/commit + kısa ilgili test çıktısı + en fazla 2–3 cümle yeterlidir. [Kısa günlük şablonu](templates/day/README.md) isteğe bağlıdır. Her gün ayrı rapor veya bütün klasörleri oluşturmak gerekmez.
 
-```text
-day-NN/
-├── README.md          # hedef, tahmin, deney, kritik kanıt ve öğrenme notu
-├── src/               # modüle ait uygulama kodu
-├── tests/             # otomatik kontroller
-└── fixtures/          # küçük ve güvenli örnek girdiler
-```
+Mevcut day-NN dizinleri tarihsel çalışmaları korur. Yeni çalışmalar ilgili küçük src/tests/fixtures yapısını yalnız ihtiyaç halinde kullanır. Büyük loglar, build çıktıları, sanal ortamlar, parolalar ve .env dosyaları commit edilmez.
 
-Her gün dört zorunlu dosya üretmek yerine yalnız probleme gerçekten hizmet eden dosyalar eklenir. Büyük loglar, build çıktıları, sanal ortamlar, tokenlar ve `.env` dosyaları commit edilmez.
+[Git çalışma akışı](docs/GIT_WORKFLOW.md) destekleyici referanstır, ayrıca günlük form ödevi değildir.
 
-Yeni modül başlangıcında [günlük çalışma şablonu](templates/day/README.md) kullanılabilir. Branch, commit ve PR kuralları [Git çalışma akışında](docs/GIT_WORKFLOW.md) açıklanmıştır.
+## Kanıtlı temel ve sıradaki öğrenmeler
 
-## Tamamlanan temel
+Geçmiş çalışmalar Python akışı/exception/CLI/parsing, Linux path/izin/process, Git staging/merge, Docker cache/PID 1/volume ve Compose service DNS, SQL/Python PostgreSQL entegrasyonu içerir. Mentor Gün 40 structured logging ve correlation çalışmasını da onaylamıştır.
 
-- Python return/exception/main/exit sınırları
-- Edge case ve assertion deneyleri
-- Liste, sözlük ve set seçimi
-- CWD, relative/absolute path ve import path ayrımı
-- stdout, stderr ve process exit gözlemi
-- Linux permission, UID/GID ve ownership modeli
-- `pathlib`, recursive arama ve `find` karşılaştırması
-- Docker image/container, build context, `COPY`, `CMD`, bind mount ve workdir
-- Modüler Python ve `argparse` CLI
-- Exception propagation ve application/runtime hata katmanları
-- JSON/CSV/JSONL sözleşmeleri, structured logging ve `jq`
-- Git working tree–index–`HEAD`, branch, merge ve conflict çözümü
-- Child process, signal, process group ve kontrollü cleanup
-- URL, DNS, TCP, TLS ve HTTP hata katmanları
-- API auth, timeout, pagination, retry/backoff ve cevap doğrulama
-- Docker PID 1, port publishing, bind/named volume ve persistence
-- Compose service/config/lifecycle, user-defined network ve service DNS
+Pagination/retry, pytest kapsamı, restore, multi-stage ve diğer V4 başlıkları için tamamlanma iddiası ilgili gerçek teslimle güncellenir; bu listeye planlandı diye eklenmez.
 
-Günlük çalışmalar [`day-01`](day-01/) ile [`day-37`](day-37/) arasındaki dizinlerde görülebilir. A/B oturumları, ilk kez görülen yoğun konuları temel alıştırma ve bağımsız uygulama olarak iki basamağa ayırır.
+## Final ürün
 
-## Final proje — Asset Intelligence Collector
+Mevcut koddan büyüyen küçük veri işleyici: JSONL veya kontrollü HTTP kaynağı → doğrulama → mevcut PostgreSQL katmanı → CLI raporu. Gerçek test/CI, tekrar kurulabilir Docker/Compose ve kısa README ile tamamlanır. Yeni API sunucusu, UI veya güvenlik risk motoru zorunlu değildir.
 
-Final ürün, farklı kaynaklardan gelen varlık ve zafiyet kayıtlarını toplayan küçük fakat üretime yakın bir sistem olacaktır:
+Deneyler yalnız kendi/izinli lab ortamında yapılır. Bu repo bütün eski 72 modülde uzmanlık iddiası değildir; neyin bağımsız yapılabildiğini ve nelerin sonraya kaldığını gösterir.
 
-```text
-JSON / CSV / HTTP API adapters
-              ↓
-validation + source lineage
-              ↓
-normalization + deterministic deduplication
-              ↓
-asset ↔ vulnerability correlation
-              ↓
-CVSS + EPSS + KEV + business criticality
-              ↓
-SQL persistence + CLI/API reports
-              ↓
-tests + CI + secure Docker/Compose
-```
-
-Kabul kriterleri arasında bozuk API/pagination/timeout testleri, structured logging, secret güvenliği, multi-stage image, non-root çalışma, health/readiness, SBOM, threat model ve incident runbook bulunur.
-
-## Güvenlik sınırı
-
-Network ve güvenlik deneyleri yalnızca sahip olduğum veya açıkça izin verilmiş yerel laboratuvar ortamlarında yapılır. Gerçek token, parola, özel anahtar, müşteri verisi veya yetkisiz hedef bilgisi bu repoya eklenmez.
-
-## Bu repository nasıl incelenebilir?
-
-1. README'den aktif kapsamı kontrol edin.
-2. İlgili `day-NN/` dizinindeki tahmin ve karşıt vakayı okuyun.
-3. Kod/test ile teknik notun aynı sonucu destekleyip desteklemediğine bakın.
-4. Commit geçmişinden yaklaşımın nasıl geliştiğini inceleyin.
-5. Gate ve final çalışmalarında farklı becerilerin tek vaka üzerinde nasıl birleştiğini takip edin.
-
-Bu repository “72 modülde uzman oldum” iddiası değil; neyi gerçekten uyguladığımı, nerede yanıldığımı ve zihinsel modelimi kanıtla nasıl düzelttiğimi gösteren açık bir gelişim kaydıdır.
+Eski kapsam için [arşiv V3.7 rotası](docs/ROADMAP_V3.md) saklanmıştır; aktif görev kaynağı değildir.
