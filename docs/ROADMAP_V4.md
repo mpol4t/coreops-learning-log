@@ -1,5 +1,7 @@
 # CoreOps V4 — 21 Eylül 2026 yürürlük planı
 
+> 13 Eylül 2026: Güncel kapsam ve kalan takvim [V4.1 staj odaklı plan](ROADMAP_V4_1.md) içindedir. V4-01..04 tamamlandı; aşağıdaki eski retry/thread zorunlulukları ve başlangıç durumu artık geçerli değildir. Bu belge geçmiş referanstır.
+
 Kullanıcı onayı: 8 Eylül 2026. Bu belge yeni görev ve değerlendirmelerde eski V2/V3/V3.7 rota, süre, güvenlik kapsamı, 04.30 şartı ve uzun teslim şablonlarının yerine geçer. Eski belgeler tarihsel referanstır; sources/ değiştirilmez.
 
 ## Başlangıç ve roller
