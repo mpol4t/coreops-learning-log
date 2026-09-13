@@ -1,0 +1,5 @@
+{"hostname":"api-01.local","risk":20}
+{"hostname":"db-01.local","risk":45}
+{"hostname":"admin-01.local","risk":80}
+{"hostname":"vpn-01.local","risk":95}
+{"hostname":"cache-02.local","risk":70}
