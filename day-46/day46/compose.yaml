@@ -1,0 +1,23 @@
+services:
+  db:
+    image: postgres:16
+
+    environment:
+      POSTGRES_USER: coreops
+      POSTGRES_PASSWORD: coreops
+      POSTGRES_DB: coreops
+
+    volumes:
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./sql/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+      - db_volume:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U coreops -d coreops"]
+      interval: 2s
+      timeout: 2s
+      retries: 10
+
+
+volumes:
+  db_volume: 
