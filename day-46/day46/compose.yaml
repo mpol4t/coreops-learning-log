@@ -20,4 +20,4 @@ services:
 
 
 volumes:
-  db_volume: 
+  db_volume:

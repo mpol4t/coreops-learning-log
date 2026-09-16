@@ -76,5 +76,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mapfile -t python_files < <(git ls-files '*.py')
+          mapfile -d '' -t python_files < <(git ls-files -z -- '*.py')
           python -m py_compile "${python_files[@]}"

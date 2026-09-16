@@ -11,4 +11,3 @@ with path.open("a+", encoding="utf-8") as file1, \
         print(f"Second fd={file2.fileno()}")
 
         input("Dosya açık kapatmak için enter...")
-

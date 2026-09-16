@@ -21,9 +21,9 @@ status: completed
 Bugün `systemd` üzerinde iki şeyi birleştirdim:
 
 - Bir işi çalıştırıp biten **oneshot service** yazdım.
-    
+
 - Bu service'i belirli bir süre sonra otomatik çalıştıran **systemd timer** yazdım.
-    
+
 
 Temel mantık:
 
@@ -42,9 +42,9 @@ işini yapar ve biter
 Buradaki önemli ayrım:
 
 - `.service` → **ne çalışacak?**
-    
+
 - `.timer` → **ne zaman çalışacak?**
-    
+
 
 ---
 

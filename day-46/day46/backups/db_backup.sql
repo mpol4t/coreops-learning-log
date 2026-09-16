@@ -179,4 +179,3 @@ ALTER TABLE ONLY public.assets
 --
 
 \unrestrict EraSLh5dDrcqkOdUUW3oJ7aEIyYMqRz1B6qJi6gnwuGay4PcMRDnZndFj3GMvp5
-

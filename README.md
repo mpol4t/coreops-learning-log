@@ -6,17 +6,19 @@
 
 Bu repository uygulamalı gelişim günlüğümdür. Eski 72 modüllük rota tarihsel referanstır; güncel odak Python/Linux/Docker, Git ve CI ise destekleyici iş akışıdır.
 
-## Güncel durum — 13 Eylül 2026
+## Güncel durum — 16 Eylül 2026
 
 | Alan | Durum |
 | --- | --- |
-| Mentor ve kanonik son onay | V4-04 GEÇTİ; V4-01..04 tamamlandı, zorunlu telafi yok |
-| Sıradaki oturum | V4.1-05: küçük systemd timer / oneshot uygulaması; henüz tamamlanmadı |
+| Mentor ve kanonik son onay | V4.1-07 GEÇTİ; V4-01..04 ve V4.1-05..07 tamamlandı, zorunlu telafi yok |
+| Sıradaki oturum | V4.1-08 / Gün 48: kaynak gözlemi ve Docker limitleri; Blok 1A verildi, henüz tamamlanmadı |
 | Hedef bitiş/değerlendirme | 21 Eylül 2026 |
 | Final ürün | Genel Veri İşleyici CLI |
 | Yürürlükteki plan | [CoreOps V4.1 — staj hazırlığı](docs/ROADMAP_V4_1.md) |
 
 Mentorun onayı ile kodun repoya yüklenmesi farklı kayıtlardır. V4-01..04 çalışmaları day-41..44 dizinlerinde bulunur. Geçmiş başarılar korunur; eski V4-05 retry görevi ertelenmiştir, tamamlandı veya başarısız sayılmaz.
+
+Gün, oturum ve dosya konumları için [klasör eşlemesine](docs/DAY_INDEX.md) bak. Gün 47'nin 16 Eylül'de yapılan Python devamı [blok3-python](day-47/blok3-python/) altında; önceki Linux blokları aynı günün içinde korunur.
 
 ## Üç ana alan
 
@@ -45,7 +47,7 @@ Mevcut day-NN dizinleri tarihsel çalışmaları korur. Yeni çalışmalar ilgil
 
 Geçmiş çalışmalar Python akışı/exception/CLI/parsing, Linux path/izin/process, Git staging/merge, Docker cache/PID 1/volume ve Compose service DNS, SQL/Python PostgreSQL entegrasyonu içerir. Mentor Gün 40 structured logging ve correlation çalışmasını da onaylamıştır.
 
-V4-01'de DB temiz kurulum ve bağlantı hatası ayrımı; V4-02'de pytest fixture/parametrize/monkeypatch; V4-03'te gerçek Ubuntu systemd/journal/izin teşhisi; V4-04'te JSONL generator ve iki sayfalı pagination mentor tarafından onaylandı. Day44 test dosyaları henüz boş; testlerin bu uygulamaya aktarımı ve CI'da çalışması sonraki pratik hedeflerdir. Restore/multi-stage/limits planlanmış olması tamamlandıkları anlamına gelmez.
+V4-01'de DB temiz kurulum ve bağlantı hatası ayrımı; V4-02'de pytest fixture/parametrize/monkeypatch; V4-03'te gerçek Ubuntu systemd/journal/izin teşhisi; V4-04'te JSONL generator ve iki sayfalı pagination mentor tarafından onaylandı. Sonrasında V4.1-05 timer/oneshot, V4.1-06 volume/restore ve V4.1-07 FD/lsof/strace ile gerçek dosya testi/library hata sınırı çalışmaları da onaylandı. Day44 test dosyaları tarihsel olarak boş; yeni test/refactor devamı Day47'de arşivlenmiştir. CI henüz davranış testlerini değil hijyen ve Python sözdizimini kontrol eder. Multi-stage ve kaynak limitleri tamamlandı sayılmaz.
 
 ## Final ürün
 
