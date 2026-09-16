@@ -11,7 +11,7 @@ Kontrol tarihi: 16 Eylül 2026. Gün numarası klasör/portföy etiketidir; çal
 | 45 | V4.1-05 | Oneshot ve timer | Gelişim/Day45 — arşiv notu | [day-45](../day-45/) | GEÇTİ; Linux unit/script dosyaları ayrıca arşivlenmiş değil |
 | 46 | V4.1-06 | Volume/bind ve PostgreSQL restore | Gelişim/Day46 | [day-46/day46](../day-46/day46/) | GEÇTİ |
 | 47 | V4.1-07 | FD/lsof, strace, tmp_path, library hata sınırı | Gelişim/Day47 — Python kısmı | [day-47](../day-47/) | GEÇTİ; Linux ve Python bölümleri aşağıda |
-| 48 | V4.1-08 | Kaynak gözlemi ve Docker limitleri | Henüz oluşturulmamış | Henüz oluşturulmamış | Blok 1A verilmiş; tamamlanma onayı yok |
+| 48 | V4.1-08 | Kaynak gözlemi ve Docker limitleri | Gelişim/Day48 — arşiv notu | [Gün 48 notu](../day-48/day-48-process-resources-disk-docker-limits.md) | Linux CPU/RAM/process ve disk blokları GEÇTİ; Docker teorisi not edildi, runtime labı bekliyor |
 
 ## Gün 47'nin parçaları
 

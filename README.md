@@ -11,7 +11,8 @@ Bu repository uygulamalı gelişim günlüğümdür. Eski 72 modüllük rota tar
 | Alan | Durum |
 | --- | --- |
 | Mentor ve kanonik son onay | V4.1-07 GEÇTİ; V4-01..04 ve V4.1-05..07 tamamlandı, zorunlu telafi yok |
-| Sıradaki oturum | V4.1-08 / Gün 48: kaynak gözlemi ve Docker limitleri; Blok 1A verildi, henüz tamamlanmadı |
+| Aktif oturum | V4.1-08 / Gün 48: Linux CPU/RAM/process ve disk gözlem blokları GEÇTİ; oturum bütünü henüz kapanmadı |
+| Sıradaki uygulama | Docker `--memory` / `--cpus` limitleri, `docker stats` ve runtime doğrulaması; uygulama henüz tamamlanmadı |
 | Hedef bitiş/değerlendirme | 21 Eylül 2026 |
 | Final ürün | Genel Veri İşleyici CLI |
 | Yürürlükteki plan | [CoreOps V4.1 — staj hazırlığı](docs/ROADMAP_V4_1.md) |
@@ -19,6 +20,8 @@ Bu repository uygulamalı gelişim günlüğümdür. Eski 72 modüllük rota tar
 Mentorun onayı ile kodun repoya yüklenmesi farklı kayıtlardır. V4-01..04 çalışmaları day-41..44 dizinlerinde bulunur. Geçmiş başarılar korunur; eski V4-05 retry görevi ertelenmiştir, tamamlandı veya başarısız sayılmaz.
 
 Gün, oturum ve dosya konumları için [klasör eşlemesine](docs/DAY_INDEX.md) bak. Gün 47'nin 16 Eylül'de yapılan Python devamı [blok3-python](day-47/blok3-python/) altında; önceki Linux blokları aynı günün içinde korunur.
+
+[Gün 48 notu](day-48/day-48-process-resources-disk-docker-limits.md), onaylanan Linux ölçümlerini ve Docker limitlerinin teorik hazırlığını tek dosyada toplar. Notun arşivlenmesi Docker uygulamasının tamamlandığı anlamına gelmez; orijinal Ubuntu workload dosyaları henüz bu repoda değildir.
 
 ## Üç ana alan
 
