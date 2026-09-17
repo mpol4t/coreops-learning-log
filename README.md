@@ -6,13 +6,13 @@
 
 Bu repository uygulamalı gelişim günlüğümdür. Eski 72 modüllük rota tarihsel referanstır; güncel odak Python/Linux/Docker, Git ve CI ise destekleyici iş akışıdır.
 
-## Güncel durum — 16 Eylül 2026
+## Güncel durum — 17 Eylül 2026
 
 | Alan | Durum |
 | --- | --- |
-| Mentor ve kanonik son onay | V4.1-07 GEÇTİ; V4-01..04 ve V4.1-05..07 tamamlandı, zorunlu telafi yok |
-| Aktif oturum | V4.1-08 / Gün 48: Linux CPU/RAM/process ve disk gözlem blokları GEÇTİ; oturum bütünü henüz kapanmadı |
-| Sıradaki uygulama | Docker `--memory` / `--cpus` limitleri, `docker stats` ve runtime doğrulaması; uygulama henüz tamamlanmadı |
+| Mentor ve kanonik son onay | V4.1-08 / Gün 48 GEÇTİ; V4-01..04 ve V4.1-05..08 tamamlandı, zorunlu açık yok |
+| Son tamamlanan çalışma | Gün 48: 16 Eylül Linux CPU/RAM/process ve disk; 17 Eylül Docker CPU limiti, stats ve inspect/NanoCpus doğrulaması |
+| Aktif oturum / sıradaki uygulama | Gün 49 / V4.1-09 Blok 1A verildi: Dockerfile ile build-time dependency kurulumu; ardından küçük multi-stage ve non-root/yazılabilir yol. Tamamlanma onayı yok |
 | Hedef bitiş/değerlendirme | 21 Eylül 2026 |
 | Final ürün | Genel Veri İşleyici CLI |
 | Yürürlükteki plan | [CoreOps V4.1 — staj hazırlığı](docs/ROADMAP_V4_1.md) |
@@ -21,7 +21,7 @@ Mentorun onayı ile kodun repoya yüklenmesi farklı kayıtlardır. V4-01..04 ç
 
 Gün, oturum ve dosya konumları için [klasör eşlemesine](docs/DAY_INDEX.md) bak. Gün 47'nin 16 Eylül'de yapılan Python devamı [blok3-python](day-47/blok3-python/) altında; önceki Linux blokları aynı günün içinde korunur.
 
-[Gün 48 notu](day-48/day-48-process-resources-disk-docker-limits.md), onaylanan Linux ölçümlerini ve Docker limitlerinin teorik hazırlığını tek dosyada toplar. Notun arşivlenmesi Docker uygulamasının tamamlandığı anlamına gelmez; orijinal Ubuntu workload dosyaları henüz bu repoda değildir.
+[Gün 48 notu](day-48/day-48-process-resources-disk-docker-limits.md), 16 Eylül Linux çalışması ile 17 Eylül Docker CPU limiti devamını tek dosyada toplar. İkisi aynı eğitim günüdür. RAM/OOM uygulaması yapılmadı; mentor bunu zorunlu açık saymadı. Bu gün yalnız not olarak arşivlenir; Ubuntu çalışma dosyalarının yüklenmemesi teslim eksiği değildir.
 
 ## Üç ana alan
 
@@ -50,7 +50,7 @@ Mevcut day-NN dizinleri tarihsel çalışmaları korur. Yeni çalışmalar ilgil
 
 Geçmiş çalışmalar Python akışı/exception/CLI/parsing, Linux path/izin/process, Git staging/merge, Docker cache/PID 1/volume ve Compose service DNS, SQL/Python PostgreSQL entegrasyonu içerir. Mentor Gün 40 structured logging ve correlation çalışmasını da onaylamıştır.
 
-V4-01'de DB temiz kurulum ve bağlantı hatası ayrımı; V4-02'de pytest fixture/parametrize/monkeypatch; V4-03'te gerçek Ubuntu systemd/journal/izin teşhisi; V4-04'te JSONL generator ve iki sayfalı pagination mentor tarafından onaylandı. Sonrasında V4.1-05 timer/oneshot, V4.1-06 volume/restore ve V4.1-07 FD/lsof/strace ile gerçek dosya testi/library hata sınırı çalışmaları da onaylandı. Day44 test dosyaları tarihsel olarak boş; yeni test/refactor devamı Day47'de arşivlenmiştir. CI henüz davranış testlerini değil hijyen ve Python sözdizimini kontrol eder. Multi-stage ve kaynak limitleri tamamlandı sayılmaz.
+V4-01'de DB temiz kurulum ve bağlantı hatası ayrımı; V4-02'de pytest fixture/parametrize/monkeypatch; V4-03'te gerçek Ubuntu systemd/journal/izin teşhisi; V4-04'te JSONL generator ve iki sayfalı pagination mentor tarafından onaylandı. Sonrasında V4.1-05 timer/oneshot, V4.1-06 volume/restore ve V4.1-07 FD/lsof/strace ile gerçek dosya testi/library hata sınırı çalışmaları da onaylandı. V4.1-08 Linux kaynak/disk gözlemi ve Docker CPU limiti uygulamasıyla kapandı. Day44 test dosyaları tarihsel olarak boş; yeni test/refactor devamı Day47'de arşivlenmiştir. CI henüz davranış testlerini değil hijyen ve Python sözdizimini kontrol eder. Multi-stage henüz tamamlanmadı; RAM/OOM yalnız teorik olarak işlendi.
 
 ## Final ürün
 

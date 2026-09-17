@@ -34,10 +34,12 @@ CAASM/CVSS/EPSS/KEV, threat-model/SBOM, source-lineage ve güvenlik ürünü yok
 SQL mevcut çalışma kadar kullanılır; yeni ORM/ileri DB/API server zorunlu değil.
 Git/CI destekleyici, günlük ekstra komut/form borcu değil.
 
-Son durum COREOPS_V4_1_STAJ: V4-01..04 korunur. Yeni sıradaki V4.1-05 (timer), HENÜZ AÇIK. Eski V4-05 ile kapsamı karıştırma.
+17 Eylül ilerleme güncellemesi COREOPS_V4_1_STAJ: V4-01..04 ve V4.1-05..08 GEÇTİ; zorunlu açık yok. V4.1-08 / Gün 48, 16 Eylül Linux ve 17 Eylül Docker CPU limiti devamıyla kapandı. RAM/OOM labı yapılmadı; mentor zorunlu açık saymadı. Sıradaki V4.1-09 / Gün 49 Blok 1A verildi, henüz tamamlanmadı. Eski V4-05 retry görevi ile V4.1-05 timer oturumunu karıştırma. Ayrıntılı gün eşlemesi için [DAY_INDEX](DAY_INDEX.md).
 Eksik kanıt = otomatik beceriksizlik değil. Bilinen konuda lab içinde küçük varyantla kontrol et; bağımsız yapıyorsa geç. Yardım gerekiyorsa sadece ilgili parçayı öğret, tüm günü tekrar ettirme.
 
 ## 3. Kalan takvim ve yük
+
+Aşağıdaki tarihler 13 Eylül'de belirlenen hedef takvimdir; gerçekleşen bitiş tarihleri değildir. Gün 48'in Docker devamı 17 Eylül'de tamamlandı. Takvim günü değişince yeni eğitim günü açılmaz; güncel durum yukarıdaki ilerleme kaydı ve gün indeksindedir.
 
 Her net süre ders, kaynak, küçük örnek, uygulama/test dahil tahmindir; 5–6 saat kullanılabilir pencereyi doldurma kotası değildir. HackMasters ayrıca. Çoğu normal tarih iki 60–120 dakikalık çalışma parçası + kısa doğrulama/aralar şeklindedir. 13 Eylül'de V4-04 zaten yapıldı; ayrıca tam günlük yük eklenmez.
 

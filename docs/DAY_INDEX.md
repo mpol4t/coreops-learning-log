@@ -1,6 +1,6 @@
 # Gün, oturum ve klasör eşlemesi
 
-Kontrol tarihi: 16 Eylül 2026. Gün numarası klasör/portföy etiketidir; çalışma tarihi değildir. Bir oturum birkaç takvim gününde bitebilir. Klasör eksikliği tek başına dersin yapılmadığı anlamına gelmez.
+Kontrol tarihi: 17 Eylül 2026. Gün numarası klasör/portföy etiketidir; çalışma tarihi değildir. Bir oturum birkaç takvim gününde bitebilir. Klasör eksikliği tek başına dersin yapılmadığı anlamına gelmez.
 
 | Gün | Eğitim oturumu | Konu | Yerel çalışma klasörü | Bu repo | Son doğrulanmış durum |
 | --- | --- | --- | --- | --- | --- |
@@ -11,7 +11,10 @@ Kontrol tarihi: 16 Eylül 2026. Gün numarası klasör/portföy etiketidir; çal
 | 45 | V4.1-05 | Oneshot ve timer | Gelişim/Day45 — arşiv notu | [day-45](../day-45/) | GEÇTİ; Linux unit/script dosyaları ayrıca arşivlenmiş değil |
 | 46 | V4.1-06 | Volume/bind ve PostgreSQL restore | Gelişim/Day46 | [day-46/day46](../day-46/day46/) | GEÇTİ |
 | 47 | V4.1-07 | FD/lsof, strace, tmp_path, library hata sınırı | Gelişim/Day47 — Python kısmı | [day-47](../day-47/) | GEÇTİ; Linux ve Python bölümleri aşağıda |
-| 48 | V4.1-08 | Kaynak gözlemi ve Docker limitleri | Gelişim/Day48 — arşiv notu | [Gün 48 notu](../day-48/day-48-process-resources-disk-docker-limits.md) | Linux CPU/RAM/process ve disk blokları GEÇTİ; Docker teorisi not edildi, runtime labı bekliyor |
+| 48 | V4.1-08 | Kaynak gözlemi ve Docker CPU limiti | Gelişim/Day48 — 16 Eylül arşiv kopyası; güncel birleşik kayıt bu repoda | [Gün 48 notu](../day-48/day-48-process-resources-disk-docker-limits.md) | GEÇTİ; Linux 16 Eylül, Docker CPU labı 17 Eylül; zorunlu açık yok |
+| 49 | V4.1-09 | Dockerfile build-time dependency; ardından multi-stage/non-root | Bu güncellemede oluşturulmadı | Henüz arşivlenmedi | Blok 1A verildi; tamamlanma onayı yok |
+
+17 Eylül'de yapılan Docker CPU limiti çalışması Gün 48'in devamıdır; ayrı gün değildir. Gün 49 yeni Dockerfile/build oturumudur. Gün 48'de RAM/OOM labı yapılmadı ve mentor bunu zorunlu açık saymadı. Ubuntu çalışma dosyaları istenmedi; yalnız not yayımlandı.
 
 ## Gün 47'nin parçaları
 
