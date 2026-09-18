@@ -59,6 +59,26 @@ jobs:
             git diff --check "$BEFORE_SHA...$CURRENT_SHA"
           fi
 
+  docker-build:
+    name: Docker image build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs:
+      - repository-hygiene
+      - python-syntax
+      - python-tests
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+
+      - name: Build Docker image
+        run: |
+          docker build \
+            -f day-49/Blok2/Dockerfile \
+            -t coreops-ci-check \
+            day-49/Blok2
+
   python-syntax:
     name: Python syntax
     runs-on: ubuntu-latest
@@ -69,7 +89,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
-          python-version: "3.12"
+          python-version: "3.13"
 
       - name: Compile tracked Python files
         shell: bash
@@ -90,7 +110,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
-          python-version: "3.12"
+          python-version: "3.13"
 
       - name: Install test dependency
         run: python -m pip install pytest
