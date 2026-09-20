@@ -4,6 +4,8 @@
 Kullanıcının son isteği: geçmiş kazanımları koruyarak Python/Linux/Docker'da stajda küçük bir işi bağımsız yapabilecek deneyim kazanmak; gerçek eksiği kapatmak, bilinenleri uygulamayla pekiştirmek. İşe kabul veya üç alanda tam ustalık garantisi verilmez.
 Bu metin V4 takvimi, HTTP retry/thread zorunluluğu, final kabulü ve mevcut V4-05 görevini aşağıdaki kapsamla değiştirir. V4'ün öğretim-önce ve kısa teslim kuralları korunur.
 
+> **Kapanış — 20 Eylül denetimi:** Mentor 19 Eylül'de V4.1-12 finalini GEÇTİ olarak kapattı; zorunlu açık yok. V4-01..04 ve V4.1-05..12 tamamlandı. Aşağıdaki takvim ve başlangıç denetimi tarihsel kayıttır. Güncel kanıtlar: [tamamlanma raporu](COMPLETION_REPORT.md) ve [gün indeksi](DAY_INDEX.md).
+
 ## 1. Gerçek başlangıç ve denetim
 
 Mentor ve kanonik 13 Eylül kayıtları: V4-01, 02, 03, 04 GEÇTİ. Son tamamlanan V4-04; zorunlu telafi yok. Repo day-41..44 bu oturumların kayıtlarıdır; eski 72'lik rota bu klasör numaralarıyla otomatik ilerlemez.
@@ -34,7 +36,7 @@ CAASM/CVSS/EPSS/KEV, threat-model/SBOM, source-lineage ve güvenlik ürünü yok
 SQL mevcut çalışma kadar kullanılır; yeni ORM/ileri DB/API server zorunlu değil.
 Git/CI destekleyici, günlük ekstra komut/form borcu değil.
 
-17 Eylül ilerleme güncellemesi COREOPS_V4_1_STAJ: V4-01..04 ve V4.1-05..08 GEÇTİ; zorunlu açık yok. V4.1-08 / Gün 48, 16 Eylül Linux ve 17 Eylül Docker CPU limiti devamıyla kapandı. RAM/OOM labı yapılmadı; mentor zorunlu açık saymadı. Sıradaki V4.1-09 / Gün 49 Blok 1A verildi, henüz tamamlanmadı. Eski V4-05 retry görevi ile V4.1-05 timer oturumunu karıştırma. Ayrıntılı gün eşlemesi için [DAY_INDEX](DAY_INDEX.md).
+Tarihsel 17 Eylül ilerleme kaydı (final kapanışı üsttedir) COREOPS_V4_1_STAJ: V4-01..04 ve V4.1-05..08 GEÇTİ; zorunlu açık yok. V4.1-08 / Gün 48, 16 Eylül Linux ve 17 Eylül Docker CPU limiti devamıyla kapandı. RAM/OOM labı yapılmadı; mentor zorunlu açık saymadı. Sıradaki V4.1-09 / Gün 49 Blok 1A verildi, henüz tamamlanmadı. Eski V4-05 retry görevi ile V4.1-05 timer oturumunu karıştırma. Ayrıntılı gün eşlemesi için [DAY_INDEX](DAY_INDEX.md).
 Eksik kanıt = otomatik beceriksizlik değil. Bilinen konuda lab içinde küçük varyantla kontrol et; bağımsız yapıyorsa geç. Yardım gerekiyorsa sadece ilgili parçayı öğret, tüm günü tekrar ettirme.
 
 ## 3. Kalan takvim ve yük

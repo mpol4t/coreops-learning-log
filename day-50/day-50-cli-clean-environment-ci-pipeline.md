@@ -20,6 +20,9 @@ status: completed
 
 # 🚀 Day 50 — Gerçek CLI → Clean Environment → CI Pipeline
 
+> [!note] 20 Eylül arşiv denetimi
+> Reader generator olsa da `build_report()` içindeki `list(records)` tüketilen bütün kayıtları belleğe alır. Bu uygulama uçtan uca sabit bellekli streaming değildir. Aşağıdaki CI GREEN kaydı o günün koşusudur; sonraki commit'ler için son workflow sonucu ayrıca kontrol edilmelidir.
+
 > [!abstract] 🎯 Ana fikir
 > Bugün tek bir script yazmaktan çıkıp küçük bir **gerçek proje akışı** kurdum:
 >

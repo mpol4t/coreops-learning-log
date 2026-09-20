@@ -1,6 +1,6 @@
 # Gün, oturum ve klasör eşlemesi
 
-Kontrol tarihi: 17 Eylül 2026. Gün numarası klasör/portföy etiketidir; çalışma tarihi değildir. Bir oturum birkaç takvim gününde bitebilir. Klasör eksikliği tek başına dersin yapılmadığı anlamına gelmez.
+Kontrol tarihi: 20 Eylül 2026. Mentor final onayı: 19 Eylül 2026. Gün numarası klasör/portföy etiketidir; çalışma tarihi değildir. Bir oturum birkaç takvim gününde bitebilir. Klasör eksikliği tek başına dersin yapılmadığı anlamına gelmez.
 
 | Gün | Eğitim oturumu | Konu | Yerel çalışma klasörü | Bu repo | Son doğrulanmış durum |
 | --- | --- | --- | --- | --- | --- |
@@ -11,8 +11,11 @@ Kontrol tarihi: 17 Eylül 2026. Gün numarası klasör/portföy etiketidir; çal
 | 45 | V4.1-05 | Oneshot ve timer | Gelişim/Day45 — arşiv notu | [day-45](../day-45/) | GEÇTİ; Linux unit/script dosyaları ayrıca arşivlenmiş değil |
 | 46 | V4.1-06 | Volume/bind ve PostgreSQL restore | Gelişim/Day46 | [day-46/day46](../day-46/day46/) | GEÇTİ |
 | 47 | V4.1-07 | FD/lsof, strace, tmp_path, library hata sınırı | Gelişim/Day47 — Python kısmı | [day-47](../day-47/) | GEÇTİ; Linux ve Python bölümleri aşağıda |
-| 48 | V4.1-08 | Kaynak gözlemi ve Docker CPU limiti | Gelişim/Day48 — 16 Eylül arşiv kopyası; güncel birleşik kayıt bu repoda | [Gün 48 notu](../day-48/day-48-process-resources-disk-docker-limits.md) | GEÇTİ; Linux 16 Eylül, Docker CPU labı 17 Eylül; zorunlu açık yok |
-| 49 | V4.1-09 | Dockerfile build-time dependency; ardından multi-stage/non-root | Bu güncellemede oluşturulmadı | Henüz arşivlenmedi | Blok 1A verildi; tamamlanma onayı yok |
+| 48 | V4.1-08 | Kaynak gözlemi ve Docker CPU limiti | Gelişim/Day48 — eski arşiv kopyası; güncel not repo ve Obsidian'da | [Gün 48 notu](../day-48/day-48-process-resources-disk-docker-limits.md) | GEÇTİ; Linux 16 Eylül, Docker CPU labı 17 Eylül; zorunlu açık yok |
+| 49 | V4.1-09 | Build-time dependency, multi-stage, non-root | Bu denetimde yerel kod taşınmadı | [day-49](../day-49/) | GEÇTİ |
+| 50 | V4.1-10 | CLI, temiz ortam, test ve build CI | Bu denetimde yerel kod taşınmadı | [day-50](../day-50/) | GEÇTİ |
+| 51 | V4.1-11 | JSON/CSV, systemd 203/EXEC, mount destination | Bu denetimde yerel kod taşınmadı | [day-51](../day-51/) | GEÇTİ |
+| 52 | V4.1-12 + final hazırlık | max-records; optional output; CWD ve read-only mount finali | Bu denetimde yerel kod taşınmadı | [day-52](../day-52/) | Mentor GEÇTİ — 19 Eylül; zorunlu kapsam tamamlandı |
 
 17 Eylül'de yapılan Docker CPU limiti çalışması Gün 48'in devamıdır; ayrı gün değildir. Gün 49 yeni Dockerfile/build oturumudur. Gün 48'de RAM/OOM labı yapılmadı ve mentor bunu zorunlu açık saymadı. Ubuntu çalışma dosyaları istenmedi; yalnız not yayımlandı.
 
@@ -35,3 +38,7 @@ Day40/Day44 çalışma kodu ile arşiv sürümleri farklıdır; topluca üst üs
 ## Kayıt kuralı
 
 Bir ders için yeni gün klasörü açmadan önce bu eşlemeye bak. Aynı oturumun devamı mevcut günün içinde kalır. Mentorun son oturum/blok kaydı başarı durumunu belirler; klasör adı, dosya oluşturma tarihi veya commit tarihi tek başına başarı değildir.
+
+## Kapanış
+
+Gün 53 açılmadı; V4.1-12 finali Gün 52 içinde tamamlandı. Mentorun 19 Eylül kapanış kaydı esas alındı. 20 Eylül'de okunan kanonik sohbetin son mesajı hâlâ final görev metniydi; sohbetler arası otomatik senkron yapılmış sayılmaz. Bu fark yeni bir eğitim eksiği değildir.

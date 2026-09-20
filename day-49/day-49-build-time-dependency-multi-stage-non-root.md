@@ -17,6 +17,9 @@ status: completed
 
 # 🐳 Day 49 — Build-Time Dependency, Multi-Stage & Non-Root Runtime
 
+> [!note] 20 Eylül arşiv denetimi
+> Bu labda `/usr/local` bütünü kopyalanıyor; bu yol Python yorumlayıcısı ve başka dosyaları da içerir. Multi-stage geçişi çalışıyor, fakat “yalnız minimum dependency” veya “ölçülmüş image küçülmesi” kanıtlanmış değildir. Host bind mount kullanıldığında image içindeki chown host dizininin izinlerini belirlemez.
+
 > [!abstract] 🎯 Ana fikir
 > Bugün Docker'da image'ı sadece **çalışabilen** değil, **çalışmaya hazır ve minimum yetkili** hale getirdim.
 >

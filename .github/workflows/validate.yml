@@ -79,6 +79,17 @@ jobs:
             -t coreops-ci-check \
             day-49/Blok2
 
+      - name: Verify non-root runtime and dependency
+        run: |
+          docker run --rm coreops-ci-check python -c \
+            'import os, pathlib, psycopg; assert os.getuid() == 10001; assert not os.access("/lab/src", os.W_OK); pathlib.Path("/lab/runtime/ci-check.txt").write_text("ok"); print("dependency and permissions OK")'
+
+      - name: Build and smoke-test final Docker lab
+        run: |
+          docker build -t coreops-final-check day-52/Final/docker-kismi
+          docker run --rm coreops-final-check python -c \
+            'import json, os, pathlib, runpy; assert os.getuid() == 10001; assert not os.access("/lab/src", os.W_OK); runpy.run_path("/lab/src/app.py", run_name="__main__"); assert json.loads(pathlib.Path("/lab/runtime/report.json").read_text()) == {"status": "ok", "total_records": 3}'
+
   python-syntax:
     name: Python syntax
     runs-on: ubuntu-latest
@@ -99,9 +110,25 @@ jobs:
           python -m py_compile "${python_files[@]}"
 
   python-tests:
-    name: Python behavior tests
+    name: Python tests — ${{ matrix.suite.directory }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        suite:
+          - directory: day-42
+            target: Blok1/tests
+          - directory: day-42/Blok2
+            target: tests
+          - directory: day-47/blok3-python
+            target: tests test_tmp_path_demo.py
+          - directory: day-51/Blok1
+            target: test_day51.py
+          - directory: day-52/Blok1
+            target: test_day52.py
+          - directory: day-52/Final
+            target: test_final.py
 
     steps:
       - name: Check out repository
@@ -113,8 +140,8 @@ jobs:
           python-version: "3.13"
 
       - name: Install test dependency
-        run: python -m pip install pytest
+        run: python -m pip install -r requirements-test.txt
 
       - name: Run behavior tests
-        working-directory: day-47/blok3-python
-        run: python -m pytest -q tests/test_records.py
+        working-directory: ${{ matrix.suite.directory }}
+        run: python -m pytest -q ${{ matrix.suite.target }}

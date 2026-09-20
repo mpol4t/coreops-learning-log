@@ -32,6 +32,6 @@ services:
       db:
         condition: service_healthy
 
-      
-    
+
+
 

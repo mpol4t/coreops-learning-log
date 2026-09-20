@@ -1,6 +1,27 @@
 import json
+import pytest
 
 from final import ReportConfig, parse_config, run
+
+
+# 20 Eylül arşiv denetimi: bu veri koruma testleri Codex tarafından eklendi.
+@pytest.mark.parametrize("alias", ["same_path", "symlink", "hardlink"])
+def test_input_cannot_be_overwritten(tmp_path, alias):
+    input_file = tmp_path / "sample.jsonl"
+    original = '{"id": 1}\n{"id": 2}\n'
+    input_file.write_text(original, encoding="utf-8")
+    output_file = input_file
+    if alias != "same_path":
+        output_file = tmp_path / "report.json"
+        if alias == "symlink":
+            output_file.symlink_to(input_file)
+        else:
+            output_file.hardlink_to(input_file)
+
+    config = ReportConfig(input_file, output_file, "json")
+    with pytest.raises(ValueError, match="aynı dosya"):
+        run(config)
+    assert input_file.read_text(encoding="utf-8") == original
 
 
 # =========================================================

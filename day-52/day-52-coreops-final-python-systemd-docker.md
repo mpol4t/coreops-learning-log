@@ -21,6 +21,9 @@ status: completed
 
 # 🏁 Day 52 — CoreOps Final | Python + systemd + Docker
 
+> [!note] 20 Eylül arşiv denetimi
+> Mentor finali 19 Eylül'de GEÇTİ olarak kapattı. Öğrencinin özgün finalinde 6 test vardı. Denetimde aynı input/output dosyasının üzerine yazılabildiği bulundu; GitHub arşivine Codex tarafından koruma ve 3 regresyon testi eklendi (final: 9 test). Bu bakım öğrencinin bağımsız final kanıtına eklenmez. `islice` lazy kalır, fakat `build_report()` liste oluşturduğu için tüm akış sabit bellekli değildir.
+
 > [!abstract] 🎯 Ana fikir
 > Bugün yeni konu doldurmaktan çok mevcut sistemi **requirement değişikliği ve runtime arızaları altında doğru teşhis edip minimum değişiklikle düzeltmeye** çalıştım.
 >
@@ -1010,7 +1013,7 @@ Bu yüzden:
 >       ↓
 >     regression proof
 >
-> **PYTHON ✅  
-> LINUX ✅  
-> DOCKER ✅  
+> **PYTHON ✅
+> LINUX ✅
+> DOCKER ✅
 > COREOPS FINAL ✅**

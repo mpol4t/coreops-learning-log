@@ -1,6 +1,6 @@
 import pytest
 
-from Blok1.src.assets_gösterilmiş import normalize_hostname
+from Blok1.src.assets_gosterilmis import normalize_hostname
 
 
 @pytest.fixture
